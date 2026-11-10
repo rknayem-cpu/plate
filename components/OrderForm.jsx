@@ -66,6 +66,14 @@ export default function OrderForm() {
       const result = await response.json();
 
       if (response.ok) {
+
+if (typeof window !== 'undefined' && window.fbq) {
+        window.fbq('track', 'Purchase', {
+          value: totalPrice, // উদাহরণ: 500 বা আপনার মোট টাকার ভ্যালু 변수
+          currency: 'BDT',    // বাংলাদেশি টাকা
+        });
+      }
+
         // SweetAlert দিয়ে সাকসেস অ্যালার্ট দেখানো
         Swal.fire({
           title: 'অভিনন্দন! 🎉',
